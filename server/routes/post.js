@@ -47,6 +47,10 @@ router.get('/mypost', requireLogin,(req, res) =>{
     })
 })
 
+router.get("/mydp",requireLogin,(req,res) =>{
+    res.send(req.user.pic);
+})
+
 router.put('/like',requireLogin,(req,res)=>{
     Post.findByIdAndUpdate(req.body.postId,{
         $push:{likes:req.user._id}

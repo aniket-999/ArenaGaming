@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require("../keys")
 const requireLogin = require('../middleware/requireLogin')
+const asyncHandler = require("express-async-handler");
 
 router.get('/protected',requireLogin, (req, res) => {
     res.send("hello user")
@@ -55,6 +56,7 @@ router.post('/signin', (req, res)=> {
         bcrypt.compare(password, savedUser.password)
         .then(doMatch=> {
             if(doMatch) {
+                // const ticket = req.headers.authorization.split(" ")[1];
                 const token = jwt.sign({_id:savedUser._id}, JWT_SECRET)
                 const {_id, name, email} = savedUser
                 res.json({token, user:{_id, name, email}})
@@ -68,5 +70,21 @@ router.post('/signin', (req, res)=> {
         })
     })
 })
+
+const allUsers = asyncHandler(async(req,res) => {
+    const keyword = req.query.search? {
+        $or: [
+            {name: { $regex: req.query.serach, $options:"i"} },
+            {email: { $regex: req.query.serach, $options:"i"} },
+        ]
+    }
+    :{};
+
+    const users = await (await User.find(keyword)).find({ _id: { $ne: req.user._id}});
+    res.send(users);
+
+})
+
+router.route("/chat").get(requireLogin,allUsers);
 
 module.exports = router

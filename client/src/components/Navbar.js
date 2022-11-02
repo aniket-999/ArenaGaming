@@ -12,6 +12,7 @@ const NavBar = () => {
                 <div>
                 <Link to='/profile'>Profile</Link>
                 <Link to='/create'>Create Post</Link>
+                <Link to="/chat">Chats</Link>
                 <button className="btn"
                     onClick={()=>{
                     localStorage.clear()
