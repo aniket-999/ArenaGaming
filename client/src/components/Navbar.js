@@ -2,6 +2,13 @@ import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../App'
 import "../App.css"
+// import ReactNavbar from "react-responsive-animate-navbar";
+// import {
+//     HomeComponent,
+//     ArticlesComponent,
+//     AboutComponent,
+//     ContactComponent,
+//   } from "./components";
 
 const NavBar = () => {
     const navigate = useNavigate();
