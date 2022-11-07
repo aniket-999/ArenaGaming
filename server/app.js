@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const PORT = 5000
+const dotenv = require('dotenv')
 const {MONGOURI} = require('./keys')
+
+dotenv.config();
 
 mongoose.connect(MONGOURI);
 mongoose.connection.on('connected', () => {
@@ -21,6 +23,7 @@ app.use(require("./routes/post"))
 app.use(require("./routes/user"))
 app.use(require("./routes/payment"))
 
+const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
-    console.log("Server is running on", PORT);
+    console.log(`Server is running on ${PORT}`);
 })
