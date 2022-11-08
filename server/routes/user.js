@@ -80,4 +80,15 @@ router.post('/search-users', (req, res)=> {
     })
 })
 
+router.get( '/user',requireLogin , async (req, res) => {
+    let objectid = req.user._id
+    let userPattern = new RegExp("^" + req.query.search);
+    User.find({email:{$regex:userPattern }, _id: {$ne: objectid}  } )
+    .then(user=> {
+        res.send({user})
+    }).catch(err=>{
+        console.log(err)
+    })
+});
+
 module.exports = router
