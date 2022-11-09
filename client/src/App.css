@@ -35,3 +35,7 @@ color: white;
     max-width: 500px;
     height: max-content;
 }
+
+.collection-item {
+    width: 100%;
+}

@@ -18,17 +18,17 @@ const Signup = ()=> {
                 }
         
          fetch("/signup",{
-             method:"post",
-             headers:{
-                 "Content-Type":"application/json",
-                 "Authorization":"Bearer "+localStorage.getItem("jwt")
-             },
-             body:JSON.stringify({
-                 name,
-                 email,
-                 password,
-                 pic:url
-             })
+            method:"post",
+            headers:{
+                "Content-Type":"application/json",
+                "Authorization":"Bearer "+localStorage.getItem("jwt")
+            },
+            body:JSON.stringify({
+                name,
+                email,
+                password,
+                pic:url
+            })
          }).then(res=>res.json())
          .then(data=>{
      

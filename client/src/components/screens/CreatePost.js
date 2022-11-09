@@ -40,15 +40,14 @@ const CreatePost = () =>{
     const postDetails = ()=>{
         const data = new FormData()
         data.append("file",image)
-       data.append("upload_preset","twitch-clone")
-       data.append("cloud_name","dvmtowfy1")
-        // data.append("api_key", "343415612378642")
+        data.append("upload_preset","twitch-clone")
+        data.append("cloud_name","dvmtowfy1")
         fetch("https://api.cloudinary.com/v1_1/dvmtowfy1/image/upload",{
             method:"post",
             body:data
         })
         .then(res=>res.json())
-       .then(data=>{
+        .then(data=>{
           setUrl(data.url)
           console.log(data.url);
        })
@@ -67,16 +66,16 @@ const CreatePost = () =>{
         }}
         >
             <input 
-            type="text"
-             placeholder="title"
-             value={title}
-             onChange={(e)=>setTitle(e.target.value)}
+                type="text"
+                placeholder="title"
+                value={title}
+                onChange={(e)=>setTitle(e.target.value)}
              />
             <input
-             type="text"
-              placeholder="body"
-              value={body}
-             onChange={(e)=>setBody(e.target.value)}
+                type="text"
+                placeholder="body"
+                value={body}
+                onChange={(e)=>setBody(e.target.value)}
               />
             <div className="file-field input-field">
              <div className="btn #64b5f6 blue darken-1">
@@ -87,9 +86,8 @@ const CreatePost = () =>{
                  <input className="file-path validate" type="text" />
              </div>
              </div>
-             <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
-             onClick={()=>postDetails()}
-             
+             <button type='submit' className="btn waves-effect waves-light #64b5f6 blue darken-1"
+                onClick={()=>postDetails()}
              >
                 Submit post
              </button>
