@@ -6,6 +6,7 @@ const {MONGOURI} = require('./keys')
 
 dotenv.config();
 
+const chatRoutes = require("./routes/chatRoutes");
 mongoose.connect(MONGOURI);
 mongoose.connection.on('connected', () => {
     console.log("Connected to database")
@@ -23,6 +24,7 @@ app.use(require("./routes/post"))
 app.use(require("./routes/user"))
 app.use(require("./routes/payment"))
 app.use(require("./routes/chat"))
+app.use("/api/chat",chatRoutes);
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {

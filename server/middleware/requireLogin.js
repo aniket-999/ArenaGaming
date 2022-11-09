@@ -1,3 +1,4 @@
+
 const jwt = require('jsonwebtoken')
 const{JWT_SECRET} = require('../keys')
 const mongoose = require('mongoose')
@@ -20,4 +21,3 @@ module.exports = (req, res, next)=> {
             next();
         })
     })
-}

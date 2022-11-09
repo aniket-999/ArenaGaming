@@ -9,6 +9,7 @@ import Signup  from './components/screens/Signup';
 import Profile  from './components/screens/Profile';
 import CreatePost  from './components/screens/CreatePost';
 import UserProfile from './components/screens/UserProfile'
+import ChatPage from './components/screens/ChatPage';
 import {reducer, initialState} from './reducers/userReducer'
 import SubscribesUserPost from "./components/screens/SubcribesUserPosts"
 
@@ -30,13 +31,14 @@ const Routing =()=> {
   }, [])
   return (
     <Routes>
-      <Route exact path = "/" element={<Home />} /> 
+      <Route exact path = "/" element={<Home />} />
       <Route path = "/signin" element={<Signin />} />
       <Route path = "/signup" element={<Signup />} />
       <Route exact path = "/profile" element={<Profile />} />
       <Route path = "/create" element={<CreatePost />} />
       <Route path = "/profile/:userid" element={<UserProfile />} />
       <Route path= "/myfollowingpost" element={<SubscribesUserPost/>} />
+      <Route path = "/chat" element={<ChatPage/>} />
     </Routes>
   )
 }
